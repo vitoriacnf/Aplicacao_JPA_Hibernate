@@ -4,21 +4,24 @@ import javax.persistence.Persistence;
 
 
 public class Update {
-    public static void atualizarDados() {
+    public static void atualizarDados(Pessoa pessoa) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("AplicacaoJpa");
         EntityManager em = emf.createEntityManager();
+        PessoaDAO pessoaDao = new PessoaDAO(em);
 
         try {
             em.getTransaction().begin();
 
-            PessoaDAO pessoaDao = new PessoaDAO(em);
-
-            Pessoa pessoa = pessoaDao.findById(8L);
-            if (pessoa != null) {
-                pessoa.setNome("Maria de Oliveira");
+            Pessoa pessoaBanco = pessoaDao.findById(pessoa.getId());
+            if (pessoaBanco == null) {
+                System.out.println("Erro ao encontrar pessoa na base de dados");
+                return;
             }
 
-            pessoaDao.update(pessoa);
+            pessoaBanco.setNome(pessoa.getNome());
+            pessoaBanco.setCpf(pessoa.getCpf());
+
+            pessoaDao.update(pessoaBanco);
 
             em.getTransaction().commit();
 

@@ -3,7 +3,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class Insert {
-    public static void inserir(){
+    public static void inserir(Pessoa pessoa){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("AplicacaoJpa");
         EntityManager em = emf.createEntityManager();
         PessoaDAO pessoaDAO = new PessoaDAO(em);
@@ -11,15 +11,9 @@ public class Insert {
         try {
             em.getTransaction().begin();
 
-            Pessoa pessoa1 = new Pessoa();
-            pessoa1.setNome("Eduarda Juliana Silva");
-            pessoa1.setCpf("03095442629");
-//            em.persist(pessoa1);
-            pessoaDAO.create(pessoa1);
+            pessoaDAO.create(pessoa);
 
             em.getTransaction().commit();
-
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

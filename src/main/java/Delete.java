@@ -3,7 +3,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class Delete {
-    public static void deletar(){
+    public static void deletar(Long id){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("AplicacaoJpa");
         EntityManager em = emf.createEntityManager();
 
@@ -12,7 +12,7 @@ public class Delete {
 
             PessoaDAO pessoaDao = new PessoaDAO(em);
 
-           pessoaDao.delete(1L);
+           pessoaDao.delete(id);
 
             em.getTransaction().commit();
 
