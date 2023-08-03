@@ -4,7 +4,7 @@ import javax.persistence.Persistence;
 import java.util.List;
 
 public class Read {
-    public static void main(String[] args) {
+    public static void mostrarDadosTabela() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("AplicacaoJpa");
         EntityManager em = emf.createEntityManager();
 
@@ -12,8 +12,6 @@ public class Read {
             em.getTransaction().begin();
 
             PessoaDAO pessoaDAO = new PessoaDAO(em);
-
-            pessoaDAO.findAll();
 
             List<Pessoa> pessoas = pessoaDAO.findAll();
             for (Pessoa p : pessoas) {

@@ -4,7 +4,7 @@ import javax.persistence.Persistence;
 
 
 public class Update {
-    public static void main(String[] args) {
+    public static void atualizarDados() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("AplicacaoJpa");
         EntityManager em = emf.createEntityManager();
 
@@ -13,7 +13,7 @@ public class Update {
 
             PessoaDAO pessoaDao = new PessoaDAO(em);
 
-            Pessoa pessoa = pessoaDao.findById(1L);
+            Pessoa pessoa = pessoaDao.findById(8L);
             if (pessoa != null) {
                 pessoa.setNome("Maria de Oliveira");
             }
