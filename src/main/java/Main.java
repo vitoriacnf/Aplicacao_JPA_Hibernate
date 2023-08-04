@@ -50,10 +50,10 @@ public class Main {
         Pessoa pessoa = new Pessoa();
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digite o nome da pessoa");
+        System.out.print("Digite o nome da pessoa: ");
         pessoa.setNome(scanner.nextLine());
 
-        System.out.println("Digite o cpf da pessoa");
+        System.out.print("Digite o cpf da pessoa: ");
         pessoa.setCpf(scanner.next());
 
         return pessoa;
@@ -63,7 +63,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digite o Id que deseja remover: ");
+        System.out.print("Digite o Id que deseja remover: ");
         Long id = scanner.nextLong();
 
         return id;
@@ -73,17 +73,15 @@ public class Main {
         Pessoa pessoa = new Pessoa();
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digite o Id que deseja atualizar: ");
+        System.out.print("Digite o Id que deseja atualizar: ");
         pessoa.setId(Long.valueOf(scanner.nextLine()));
 
-        System.out.println("Digite o nome da pessoa: ");
+        System.out.print("Digite o nome da pessoa: ");
         pessoa.setNome(scanner.nextLine());
 
-        System.out.println("Digite o cpf: ");
+        System.out.print("Digite o cpf: ");
         pessoa.setCpf(scanner.next());
 
         return pessoa;
     }
-
-
 }
